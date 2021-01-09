@@ -3,7 +3,11 @@ import webbrowser
 
 WINDOW_WIDTH = 300
 WINDOW_HEIGHT=200
-#window.geometry(str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGHT))
+
+CURRENT_STOCK_PRICE=0
+ALLOCATED_AMOUNT=0
+BUYED_STOCK_AT_PRICE=0
+
 
 def current_price_of_tesla(event):
     webbrowser.open_new_tab('https://duckduckgo.com/?q=current+price+of+tesla+shares&ia=stock')
@@ -12,7 +16,14 @@ def current_price_of_bitcoin(event):
     webbrowser.open_new_tab('https://www.coinbase.com/price/bitcoin')
 
 def calc_profit(event):
-    pass
+    # TODO need to make output on app screen not on console!!!
+    current_stock_price_entry.get()
+    buyed_stock_at_price_entry.get()
+    allocated_amount_entry.get()
+    procent=float(allocated_amount_entry.get())/float(buyed_stock_at_price_entry.get())
+    profit=procent*(float(current_stock_price_entry.get()))
+    profit-=float(allocated_amount_entry.get())
+    print(str(profit))
 
 window=tk.Tk()
 window.geometry(str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGHT))
@@ -32,8 +43,8 @@ buyed_label = tk.Label(text = "Buyed at price", font=("Times new roman",10))
 buyed_label.grid(column=3,row=2)
 
 buyed_stock_price = tk.StringVar()
-buyed_stock_entry = tk.Entry(window, textvariable=buyed_stock_price)
-buyed_stock_entry.grid(column=3,row=3)
+buyed_stock_at_price_entry = tk.Entry(window, textvariable=buyed_stock_price)
+buyed_stock_at_price_entry.grid(column=3, row=3)
 
 #current stock price
 current_stock_label = tk.Label(text = "current stock", font=("Times new roman",10))
