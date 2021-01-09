@@ -17,13 +17,16 @@ def current_price_of_bitcoin(event):
 
 def calc_profit(event):
     # TODO need to make output on app screen not on console!!!
-    current_stock_price_entry.get()
-    buyed_stock_at_price_entry.get()
-    allocated_amount_entry.get()
-    procent=float(allocated_amount_entry.get())/float(buyed_stock_at_price_entry.get())
-    profit=procent*(float(current_stock_price_entry.get()))
-    profit-=float(allocated_amount_entry.get())
+    current_stock_price=float(current_stock_price_entry.get())
+    buyed_stock_at_price=float(buyed_stock_at_price_entry.get())
+    allocated_amount=float(allocated_amount_entry.get())
+    procent=allocated_amount/buyed_stock_at_price
+    profit=procent*current_stock_price
+    profit-=allocated_amount
     print(str(profit))
+
+    current_stock_label = tk.Label(text=str(profit), font=("Times new roman", 10))
+    current_stock_label.grid(column=1, row=7)
 
 window=tk.Tk()
 window.geometry(str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGHT))
