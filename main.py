@@ -11,6 +11,8 @@ def current_price_of_tesla(event):
 def current_price_of_bitcoin(event):
     webbrowser.open_new_tab('https://www.coinbase.com/price/bitcoin')
 
+def calc_profit(event):
+    pass
 
 window=tk.Tk()
 window.geometry(str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGHT))
@@ -48,10 +50,12 @@ button_for_bitcoin=tk.Button(window, text="Bitcoin", bg="pink")
 button_for_bitcoin.grid(column=3, row=1)
 
 #for button to calc current profit
+#TODO MAKE BUTTON BE AS SAME WIDTH AS window
 profit_calc_button=tk.Button(window, text="CALC_CURRENT_PROFIT", bg="blue")
 profit_calc_button.grid(column=0, row=6)
 
+
 button_for_tesla.bind("<Button-1>", current_price_of_tesla)
 button_for_bitcoin.bind("<Button-1>", current_price_of_bitcoin)
-
+profit_calc_button.bind("<Button-1>", calc_profit)
 window.mainloop()
